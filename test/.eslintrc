@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "import/unambiguous": 0,
+    "no-console": 0
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  }
+}
