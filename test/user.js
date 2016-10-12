@@ -1,4 +1,6 @@
 import Bankin from '../lib/bankin';
+import User from '../lib/user';
+import Pagination from '../lib/pagination';
 
 import {expect} from 'chai';
 
