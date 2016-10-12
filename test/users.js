@@ -87,4 +87,37 @@ describe('Class Users', () => {
 
     after(() => bankin.users._deleteAll());
   });
+
+  describe('Edit / delete user', () => {
+    let user;
+    const email = `loutre${Math.round(Math.random() * 1000)}@mail.com`;
+
+    beforeEach(() => {
+      return bankin.users.create(email, 'abcdef123456')
+        .then(() => bankin.users.auth(email, 'abcdef123456'))
+        .then((u) => user = u);
+    });
+
+    it('should edit user', () => {
+      return bankin.users.edit(user.user.uuid, 'abcdef123456', '654321fedcba')
+        .then((u) => {
+          expect(u).to.have.property('email', email);
+
+          return bankin.users.auth(email, '654321fedcba');
+        })
+        .then((u) => {
+          expect(u).to.have.property('access_token');
+        });
+    });
+
+    it('should delete user', () => {
+      return bankin.users.delete(user.user.uuid, 'abcdef123456')
+        .then(() => bankin.users.list())
+        .then((users) => {
+          expect(users.resources).to.have.lengthOf(0);
+        });
+    });
+
+    afterEach(() => bankin.users._deleteAll());
+  });
 });
