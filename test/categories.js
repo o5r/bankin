@@ -30,10 +30,10 @@ describe('Class Categories', () => {
 
   });
 
-  it('should get one categorie by id', () => {
+  it('should get one category by id', () => {
     return bankin.categories.get(321)
       .then(category => {
-        expect(category).to.be.eql({
+        expect(category).to.eql({
           id: 321,
           name: 'Beauty care',
           parent: {

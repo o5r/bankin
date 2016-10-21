@@ -1,6 +1,6 @@
 # Bankin'
 
-Un-official node.js module for [Bankin' Web Services](https://bws.bankin.com)
+Unofficial Node.js module for [Bankin' Web Services](https://bws.bankin.com)
 
 [![Codeship](https://img.shields.io/codeship/35568bf0-71ee-0134-1517-4aa1d703861e/master.svg)](https://app.codeship.com/projects/178470) [![npm](https://img.shields.io/npm/dt/bankin.svg)](https://www.npmjs.com/package/bankin) [![npm](https://img.shields.io/npm/v/bankin.svg)](https://www.npmjs.com/package/bankin) [![license](https://img.shields.io/github/license/lendix/bankin.svg)](https://github.com/Lendix/bankin/blob/master/LICENSE.md)
 
@@ -64,5 +64,6 @@ bankin.users.auth('myemail2@mail.com', 'PaSsEwOrD123456')) // login with it
 
 ## Documentations
 
-[Official REST API documentation](https://apidocs.bankin.com/v2/docs)
-[bankin node module documentation](https://lendix.github.io/bankin)
+- [Official REST API documentation](https://apidocs.bankin.com/v2/docs)
+
+- [Bankin Node module documentation](https://lendix.github.io/bankin)

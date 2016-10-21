@@ -25,7 +25,7 @@ describe('Class Users', () => {
         });
     });
 
-    it('should return error when create user with missing params', () => {
+    it('should return error when creating user with missing params', () => {
       return bankin.users.create('tototo@mail.com')
         .catch(err => {
           expect(err).to.be.instanceof(Error);

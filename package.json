@@ -1,13 +1,13 @@
 {
   "name": "bankin",
   "version": "0.0.3",
-  "description": "Un-official node.js module for Bankin Web Services",
+  "description": "Unofficial Node.js module for Bankin Web Services",
   "keywords": [
     "bankin",
     "bank",
     "banking"
   ],
-  "author": "Lendix IFP",
+  "author": "Lendix",
   "contributors": "https://github.com/Lendix/bankin/graphs/contributors",
   "bugs": "https://github.com/Lendix/bankin/issues",
   "license": "MIT",
