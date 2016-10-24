@@ -1,13 +1,13 @@
 {
   "name": "bankin",
-  "version": "0.0.3",
-  "description": "Un-official node.js module for Bankin Web Services",
+  "version": "0.0.4",
+  "description": "Unofficial Node.js module for Bankin Web Services",
   "keywords": [
     "bankin",
     "bank",
     "banking"
   ],
-  "author": "Lendix IFP",
+  "author": "Lendix",
   "contributors": "https://github.com/Lendix/bankin/graphs/contributors",
   "bugs": "https://github.com/Lendix/bankin/issues",
   "license": "MIT",
@@ -19,7 +19,7 @@
   "scripts": {
     "build": "rm -rf dist && babel lib --out-dir dist",
     "deployDocs": "npm run docs && sh ./scripts/deployDocs.sh",
-    "docs": "jsdoc -p -c .jsdoc.json -R README.md",
+    "docs": "rm -rf docs && jsdoc -p -c .jsdoc.json -R README.md",
     "lint": "eslint *.js lib/* test/*",
     "my-prepublish": "npm run build && npm run deployDocs",
     "prepublish": "in-publish && npm run my-prepublish || not-in-publish",
