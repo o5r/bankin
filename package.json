@@ -1,6 +1,6 @@
 {
   "name": "bankin",
-  "version": "0.0.6",
+  "version": "1.0.0-rc.1",
   "description": "Unofficial Node.js module for Bankin Web Services",
   "keywords": [
     "bankin",
