@@ -1,0 +1,71 @@
+/* @flow */
+
+declare module 'bankin' {
+  declare class Bankin {
+    _client: Client;
+    banks: Banks;
+    categories: Categories;
+    users: Users;
+    constructor(clientId: string, clientSecret: string, version?: string): void;
+  }
+
+  declare class Pagination {
+    pagination: Object;
+    next(): Promise<Pagination>;
+    previous(): Promise<Pagination>;
+  }
+
+  declare class Banks {
+    get(bankId: string): Promise<Object>;
+    list(_?: {after?: string, before?: string, limit: number}): Promise<Pagination<Object>>;
+  }
+
+  declare class Categories {
+    get(categoryId: number, lang?: string): Promise<Object>;
+    list(_?: {after?: string, before?: string, limit: number}, lang?: string): Promise<Pagination<Object>>;
+  }
+
+  declare class Users {
+    _deleteAll(): Promise<Object>;
+    auth(email: string, password: string): Promise<User>;
+    create(email: string, password: string): Promise<Object>;
+    delete(userId: string, password: string): Promise<Object>;
+    edit(userId: string, current_password: string, new_password: string): Promise<Object>;
+    list(_?: {after?: string, before?: string, limit: number}): Promise<Pagination<Object>>;
+  }
+
+  declare class User {
+    user: {uuid: string};
+
+    accounts: {
+      list(_?: {after?: string, before?: string, limit: number}): Promise<Pagination<Object>>,
+      get(id: string): Promise<Object>;
+    };
+    items: {
+      connectUrl(bank_id: number, redirect_url?: string): Promise<string>,
+      list(_?: {after?: string, before?: string, limit: number}): Promise<Pagination<Object>>,
+      get(id: string): Promise<Object>,
+      editUrl(id: string, redirect_url?: string): Promise<string>,
+      refresh(id: string): Promise<Object>,
+      refreshStatus(id: string): Promise<Object>,
+      mfa(id: string, otp: string): Promise<Object>,
+      delete(id: string): Promise<Object>
+    };
+    stocks: {
+      list(_?: {after?: string, before?: string, limit: number}): Promise<Pagination<Object>>,
+      listUpdated(_?: {after: string, before: string, limit: number, since: number}): Promise<Pagination<Object>>,
+      get(id: string): Promise<Object>
+    };
+    transactions: {
+      list(_?: {after?: string, before?: string, limit: number}): Promise<Pagination<Object>>,
+      listUpdated(_?: {after: string, before: string, limit: number, since: number}): Promise<Pagination<Object>>,
+      get(id: string): Promise<Object>
+    };
+
+    delete(): Promise<Object>;
+    edit(new_password: string): Promise<Object>;
+    logout(): Promise<Object>;
+  }
+
+  declare module.exports: Class<Bankin>;
+}
