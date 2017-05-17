@@ -1,0 +1,12 @@
+/* @flow */
+
+declare module got {
+  declare class Got {
+    get: <T>(url: string, config?: Object) => Promise<T>;
+    delete: <T>(url: string, config?: Object) => Promise<T>;
+    head: <T>(url: string, config?: Object) => Promise<T>;
+    post: <T>(url: string, data?: mixed, config?: Object) => Promise<T>;
+    put: <T>(url: string, data?: mixed, config?: Object) => Promise<T>;
+  }
+  declare var exports: Got;
+}
