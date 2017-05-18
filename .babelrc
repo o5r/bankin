@@ -1,8 +1,4 @@
 {
   "presets": ["es2015", "stage-3"],
-  "env": {
-    "test": {
-      "plugins": ["transform-flow-strip-types"]
-    }
-  }
+  "plugins": ["transform-flow-strip-types"]
 }
