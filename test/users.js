@@ -8,7 +8,7 @@ describe('Class Users', () => {
   let bankin;
 
   beforeEach(() => {
-    bankin = new Bankin(process.env.BANKIN_SANDBOX_CLIENT_ID, process.env.BANKIN_SANDBOX_CLIENT_SECRET);
+    bankin = new Bankin(process.env.BANKIN_CLIENT_ID, process.env.BANKIN_CLIENT_SECRET);
   });
 
   describe('Create', () => {
