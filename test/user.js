@@ -8,7 +8,7 @@ describe('Class User', () => {
   const email = `loutre${Math.round(Math.random() * 1000)}@mail.com`;
 
   before(() => {
-    bankin = new Bankin(process.env.BANKIN_SANDBOX_CLIENT_ID, process.env.BANKIN_SANDBOX_CLIENT_SECRET);
+    bankin = new Bankin(process.env.BANKIN_CLIENT_ID, process.env.BANKIN_CLIENT_SECRET);
   });
 
   beforeEach(() => {
