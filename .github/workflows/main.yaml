@@ -5,28 +5,50 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [6]
+
     steps:
       - uses: actions/checkout@v2
       - name: Build on Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 6
-      - run: npm install --ignore-scripts
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        id: cache-dependencies
+        uses: actions/cache@v2
+        env:
+            cache-name: cache-node-modules
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm install --ignore-scripts
+
       - run: npm test
         env:
           BANKIN_CLIENT_ID: ${{ secrets.BANKIN_CLIENT_ID }}
           BANKIN_CLIENT_SECRET: ${{ secrets.BANKIN_CLIENT_SECRET }}
+
       - run: npm run lint
 
   publish:
     if: github.ref == 'refs/heads/master'
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [6]
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 6
+          node-version: ${{ matrix.node-version }}
       - name: Publish
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
