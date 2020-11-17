@@ -50,7 +50,15 @@ describe('Class Banks', () => {
           country_code: 'FR',
           automatic_refresh: true,
           resource_uri: '/v2/banks/64',
-          resource_type: 'bank'
+          resource_type: 'bank',
+          authentication_type: 'INTERNAL_CREDS',
+          deeplink_android: null,
+          deeplink_ios: null,
+          logo_url: 'https://web.bankin.com/img/banks-logo/france/01_CA@2x.png',
+          payment_enabled: false,
+          primary_color: null,
+          secondary_color: null,
+          transfer_enabled: true
         });
       });
   });
